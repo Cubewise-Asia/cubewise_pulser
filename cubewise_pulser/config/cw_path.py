@@ -1,7 +1,7 @@
 import os
 import sys
 
-from cubewise.utils.constants import APP_NAME
+from cubewise_pulser.utils.constants import APP_NAME
 
 if getattr(sys, 'frozen', False):
     application_path = os.path.dirname(sys.executable)

@@ -1,5 +1,6 @@
 import configparser
-from cubewise.config import cw_path
+
+from cubewise_pulser.config import cw_path
 
 
 class cw_config():

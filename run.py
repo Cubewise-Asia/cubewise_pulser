@@ -1,14 +1,14 @@
-import os
 import logging
-import uvicorn
-
-from logging.config import fileConfig
+import os
 from configparser import NoSectionError
-from cubewise.config import cw_path
-from cubewise.config.logging import generate_logging_config
-from cubewise.config.access_token import create_access_token
-from cubewise.web_server import create_app
-from cubewise.utils.constants import Default
+from logging.config import fileConfig
+
+import uvicorn
+from cubewise_pulser.config import cw_path
+from cubewise_pulser.config.access_token import create_access_token
+from cubewise_pulser.config.logging import generate_logging_config
+from cubewise_pulser.utils.constants import Default
+from cubewise_pulser.web_server import create_app
 
 IS_DEV = os.environ.get('ENV') == 'development'
 generate_logging_config(cw_path.logging_config, cw_path.log_path)

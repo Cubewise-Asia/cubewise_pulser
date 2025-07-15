@@ -1,6 +1,6 @@
+from cubewise_pulser.config import cw_path
+from cubewise_pulser.utils.constants import API_KEY_HEADER
 from fastapi import Header, HTTPException, status
-from cubewise.config import cw_path
-from cubewise.utils.constants import API_KEY_HEADER
 
 
 def verify_api_key(x_api_key: str = Header(None, alias=API_KEY_HEADER)):

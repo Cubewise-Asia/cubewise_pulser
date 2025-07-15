@@ -1,9 +1,8 @@
 import os
 
+from cubewise_pulser.config.cw_path import sample_file
+from cubewise_pulser.schemas.sample import Content
 from fastapi import HTTPException
-
-from cubewise.config.cw_path import sample_file
-from cubewise.schemas.sample import Content
 
 
 def is_file_existing():
