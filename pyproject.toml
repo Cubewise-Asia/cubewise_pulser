@@ -1,0 +1,40 @@
+[project]
+name = "cubewise-pulser"
+version = "0.0.0"
+description = "this is mcp tool for cubewise pulse opensearch"
+readme = "README.md"
+authors = [
+    {name = "Cubewise HK - Joe Chow HK", email = "jchow@cubewise.com"}
+]
+dependencies = [
+    "setuptools",
+    "wheel",
+    "opensearch-py",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "coverage",
+    "pytest",
+    "pytest-cov",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cubewise_pulser"]
+
+
+[tool.isort]
+profile = "hug"
+src_paths = ["tests", "src"]
+
+[tool.yapf]
+based_on_style = 'google'
+column_limit = 120
+
