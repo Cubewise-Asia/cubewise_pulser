@@ -1,6 +1,9 @@
+from dataclasses import dataclass
+
 from opensearchpy import OpenSearch
 
 
+@dataclass(frozen=True)
 class OpenSearchConfig:
     host: str
     port: str
@@ -8,9 +11,7 @@ class OpenSearchConfig:
     @classmethod
     def load_from_config(cls, config: 'ConfigParser'):
         assert 'opensearch' in config.sections(), 'opensearch section not found in config'
-        config_class = cls()
-        config_class.host = config['opensearch']['host']
-        config_class.port = config['opensearch']['port']
+        config_class = cls(**config['opensearch'])
         return config_class
 
     def to_dict(self):
@@ -27,30 +28,38 @@ class OpenSearchConfig:
         }
 
 
+@dataclass(frozen=True)
 class MCPServerConfig:
-    name: str
     host: str
     port: str
-    instruction: str
-    sse_path: str
+    path: str
+    transport: str
+    log_level: str
 
     @classmethod
     def load_from_config(cls, config: 'ConfigParser'):
         section_name = 'mcp-server'
-        assert 'section_name' in config.sections(), 'mcp-server not found in config'
-        config_class = cls()
-        section = config[section_name]
-        config_class.name = section['name']
-        config_class.host = section['host']
-        config_class.port = section['port']
-        config_class.instruction = section['instruction']
-        config_class.sse_path = section['sse_path']
+        assert section_name in config.sections(), 'mcp-server not found in config'
+        config_class = cls(**config[section_name])
+        return config_class
 
     def to_dict(self):
         return {
             "host": self.host,
-            "name": self.name,
-            "port": self.port,
-            "instruction": self.instruction,
-            "sse_path": self.sse_path
+            "port": int(self.port),
+            "path": self.path,
+            'transport': self.transport,
+            'log_level': self.log_level,
         }
+
+
+@dataclass(frozen=True)
+class PathConfig:
+    project_root: str
+    tool_yaml: str
+
+    @classmethod
+    def load_from_config(cls, config: 'ConfigParser'):
+        section_name = 'path'
+        assert section_name in config.sections(), 'path not found in config'
+        return cls(**config[section_name])
