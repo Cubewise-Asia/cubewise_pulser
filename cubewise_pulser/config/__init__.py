@@ -1,5 +1,6 @@
 import configparser
-from cubewise.config import cw_path
+
+from cubewise_pulser.config import cw_path
 
 
 class cw_config():
@@ -13,6 +14,7 @@ class cw_config():
 
 
 def init_config() -> cw_config:
+    assert cw_path.general_config_path, 'config path is not found at {}'.format(cw_path.general_config_path)
     general_config = configparser.ConfigParser()
     general_config.read(cw_path.general_config_path)
 

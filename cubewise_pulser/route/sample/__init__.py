@@ -1,8 +1,7 @@
+from cubewise_pulser.dependencies.access_token import verify_api_key
+from cubewise_pulser.route.sample.utils import Notepad as _Notepad
+from cubewise_pulser.schemas.sample import Content, Notepad, content_param
 from fastapi import APIRouter, Depends, status
-
-from cubewise.dependencies.access_token import verify_api_key
-from cubewise.route.sample.utils import Notepad as _Notepad
-from cubewise.schemas.sample import Content, Notepad, content_param
 
 router = APIRouter(prefix='/api/sample', tags=['SAMPLE'], dependencies=[Depends(verify_api_key)])
 

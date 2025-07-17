@@ -1,7 +1,7 @@
-from fastapi import APIRouter, status, Depends
-from cubewise.route.base.utils import configparser_to_json
-from cubewise.utils.dependencies import get_cw_config
-from cubewise.dependencies.access_token import verify_api_key
+from cubewise_pulser.dependencies.access_token import verify_api_key
+from cubewise_pulser.route.base.utils import configparser_to_json
+from cubewise_pulser.utils.dependencies import get_cw_config
+from fastapi import APIRouter, Depends, status
 
 router = APIRouter(prefix='/api/function', tags=['BASE'], dependencies=[Depends(verify_api_key)])
 

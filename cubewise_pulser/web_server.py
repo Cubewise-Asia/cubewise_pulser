@@ -1,5 +1,9 @@
 import logging
 
+from cubewise_pulser.config import init_config
+from cubewise_pulser.route import base, sample
+from cubewise_pulser.utils import resource_path
+from cubewise_pulser.utils.constants import APP_NAME, APP_VERSION
 from fastapi import FastAPI, Request, status
 from fastapi.openapi.docs import (
     get_redoc_html,
@@ -8,11 +12,6 @@ from fastapi.openapi.docs import (
 )
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
-
-from cubewise.config import init_config
-from cubewise.route import base, sample
-from cubewise.utils import resource_path
-from cubewise.utils.constants import APP_NAME, APP_VERSION
 
 
 def create_app(debug=False):

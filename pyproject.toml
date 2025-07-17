@@ -10,6 +10,7 @@ dependencies = [
     "setuptools",
     "wheel",
     "opensearch-py",
+	"fastmcp",
 ]
 
 [project.optional-dependencies]
@@ -37,4 +38,3 @@ src_paths = ["tests", "src"]
 [tool.yapf]
 based_on_style = 'google'
 column_limit = 120
-
