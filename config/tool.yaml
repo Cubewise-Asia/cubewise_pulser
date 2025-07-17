@@ -1,0 +1,9 @@
+mcp-server:
+  name: Cubewise Pulser
+  instructions: >
+    this is the toolbox for getting server activity information
+
+chore-process-history:
+  name: process-history
+  description: >
+    checking the execution process history with in the server
